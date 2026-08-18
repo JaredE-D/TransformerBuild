@@ -86,19 +86,6 @@ Sample translations (English source → German reference → model output):
 Shorter/simpler sentences translate cleanly; longer sentences with multiple
 clauses keep the right vocabulary but lose some structure 
 
-## Checkpoints
-
-Checkpoints are no longer committed to git 
-- `checkpoints/translation_layers6_drop0.2/epoch_039.pt` — full run (model +
-  optimizer + scheduler state) matching the config above, saved at epoch 40.
-  Used for the BLEU result above.
-- `checkpoints/epoch_043.pt` — an earlier training run from a prior config
-  iteration, kept for reference only; it does not match the current model
-  config and should not be loaded with it.
-
-The training loop now tracks the best validation loss and saves it to
-`best.pt` (instead of every epoch), and stops automatically after 10 epochs
-with no improvement —
 
 ## Recent improvements
 
@@ -118,6 +105,7 @@ with no improvement —
   a couple of points.
 - The GPT-2 BPE tokenizer wasn't designed for German — a German-aware or
   joint-vocabulary tokenizer would likely improve results.
+- Could train using WandB to optimize hyperparams, change tokenizer and also train on dif dataset.
 
 ## Repo structure
 
